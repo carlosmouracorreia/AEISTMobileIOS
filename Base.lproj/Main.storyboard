@@ -43,7 +43,7 @@
                                 </connections>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="240" translatesAutoresizingMaskIntoConstraints="NO" id="NXk-eK-M6y" customClass="RatingControl" customModule="AEISTMobile" customModuleProvider="target">
-                                <rect key="frame" x="20" y="428" width="240" height="128"/>
+                                <rect key="frame" x="20" y="428" width="350" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -53,6 +53,7 @@
                         <outlet property="mealNameLabel" destination="yqY-mE-Fk2" id="OS0-fN-pud"/>
                         <outlet property="nameTextField" destination="uPo-pW-yO0" id="7Qx-My-EkN"/>
                         <outlet property="photoImageView" destination="e8Z-yR-HuA" id="bbY-6h-LfN"/>
+                        <outlet property="ratingControl" destination="NXk-eK-M6y" id="NpM-oS-iZ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
