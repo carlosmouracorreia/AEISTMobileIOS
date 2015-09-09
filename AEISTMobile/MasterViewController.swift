@@ -82,13 +82,14 @@ class MasterViewController: UITableViewController {
 	}
 
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MyEventCell
 
 		let object = objects[indexPath.row]
-		cell.textLabel!.text = object["title"]
-		cell.detailTextLabel!.text = object["body"]
+		cell.myTitleLabel!.text = object["title"]
+		cell.myDescLabel!.text = object["body"]
 		
 		return cell
 	}
+    
 }
 

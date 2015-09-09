@@ -12,6 +12,7 @@
 		51A546B11A1E014B00C2AB9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A546AF1A1E014B00C2AB9B /* Main.storyboard */; };
 		51A546B61A1E014B00C2AB9B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A546B41A1E014B00C2AB9B /* LaunchScreen.xib */; };
 		51A546CC1A1E0C8F00C2AB9B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A546CB1A1E0C8F00C2AB9B /* SwiftyJSON.swift */; };
+		D041F4AC1BA09266002691B2 /* MyEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041F4AB1BA09266002691B2 /* MyEventCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D07349B61BA07ABC00F0D75F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07349B51BA07ABC00F0D75F /* DetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D0DF64631BA0764000C06B4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0DF64621BA0764000C06B4C /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 		51A546B01A1E014B00C2AB9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		51A546B51A1E014B00C2AB9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		51A546CB1A1E0C8F00C2AB9B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D041F4AB1BA09266002691B2 /* MyEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventCell.swift; sourceTree = "<group>"; };
 		D07349B51BA07ABC00F0D75F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../../../../research/swift/HackingWithSwift/project7/Project7/DetailViewController.swift; sourceTree = "<group>"; };
 		D0DF64621BA0764000C06B4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../research/swift/AEISTMobile/AEISTMobile/Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +60,7 @@
 		51A546A61A1E014B00C2AB9B /* AEISTMobile */ = {
 			isa = PBXGroup;
 			children = (
+				D041F4AB1BA09266002691B2 /* MyEventCell.swift */,
 				D07349B51BA07ABC00F0D75F /* DetailViewController.swift */,
 				D0DF64621BA0764000C06B4C /* Assets.xcassets */,
 				51A546A91A1E014B00C2AB9B /* AppDelegate.swift */,
@@ -151,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D041F4AC1BA09266002691B2 /* MyEventCell.swift in Sources */,
 				51A546AC1A1E014B00C2AB9B /* MasterViewController.swift in Sources */,
 				51A546AA1A1E014B00C2AB9B /* AppDelegate.swift in Sources */,
 				51A546CC1A1E0C8F00C2AB9B /* SwiftyJSON.swift in Sources */,
