@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebImage
 
 class MasterViewController: UITableViewController {
 	var objects = [[String: String]]()
@@ -42,7 +43,8 @@ class MasterViewController: UITableViewController {
 			let title = result["evento_titulo"].stringValue
 			let body = result["evento_desc"].stringValue
 			let sigs = result["evento_link"].stringValue
-			let obj = ["title": title, "body": body, "sigs": sigs]
+            let pic = result["evento_foto"].stringValue
+			let obj = ["title": title, "body": body, "sigs": sigs,"pic": pic]
 			objects.append(obj)
 		}
 
@@ -87,7 +89,8 @@ class MasterViewController: UITableViewController {
 		let object = objects[indexPath.row]
 		cell.myTitleLabel!.text = object["title"]
 		cell.myDescLabel!.text = object["body"]
-		
+        let url = NSURL(string: object["pic"]!)
+        cell.myImage.sd_setImageWithURL(url)
 		return cell
 	}
     
