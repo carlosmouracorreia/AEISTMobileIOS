@@ -62,7 +62,7 @@ class MasterViewController: UITableViewController {
             } else {
                 title = result["name"].stringValue
                 body = result["desc"].stringValue
-                sigs = result["evento_link"].stringValue
+                sigs = result["dia"].stringValue
                 pic = result["urlFoto"].stringValue
             }
             let obj = ["title": title, "body": body, "sigs": sigs,"pic": pic]
@@ -112,6 +112,12 @@ class MasterViewController: UITableViewController {
 		cell.myDescLabel!.text = object["body"]
         let url = NSURL(string: object["pic"]!)
         cell.myImage.sd_setImageWithURL(url)
+        if navigationController?.tabBarItem.tag == 0 {
+            cell.myDateLabel!.hidden = true
+        } else {
+            cell.myDateLabel!.hidden = false
+            cell.myDateLabel!.text = object["sigs"]
+        }
 		return cell
 	}
     
