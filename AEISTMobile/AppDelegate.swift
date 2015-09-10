@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		var storyboard = UIStoryboard(name: "Main", bundle: nil)
 		var vc = storyboard.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
-		vc.tabBarItem = UITabBarItem(tabBarSystemItem: .TopRated, tag: 1)
+        vc.tabBarItem = UITabBarItem(title: "BBQs", image: nil, tag: 1)
 
 		tabBarController.viewControllers?.append(vc)
 
