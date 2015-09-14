@@ -53,19 +53,21 @@ class MasterViewController: UITableViewController {
 
     func parseJSON(json: JSON, typeC: Int) {
 		for result in json["results"].arrayValue {
-            var title,body,sigs,pic : String
+            var title,body,sigs,pic,id : String
             if typeC==0 {
                 title = result["evento_titulo"].stringValue
                 body = result["evento_desc"].stringValue
                 sigs = result["evento_link"].stringValue
                 pic = result["evento_foto"].stringValue
+                id = result["id"].stringValue
             } else {
                 title = result["name"].stringValue
                 body = result["desc"].stringValue
                 sigs = result["dia"].stringValue
                 pic = result["urlFoto"].stringValue
+                id = result["id"].stringValue
             }
-            let obj = ["title": title, "body": body, "sigs": sigs,"pic": pic]
+            let obj = ["title": title, "body": body, "sigs": sigs,"pic": pic,"id":id]
 			objects.append(obj)
 		}
 
