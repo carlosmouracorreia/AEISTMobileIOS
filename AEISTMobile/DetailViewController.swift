@@ -1,39 +1,59 @@
 //
 //  DetailViewController.swift
-//  Project7
+//  AEISTMobile
 //
-//  Created by Hudzilla on 20/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Carlos Correia on 07/09/2015.
+//  Copyright (c) 2015 AEIST. All rights reserved.
 //
 
 import UIKit
-import WebKit
 
-@available(iOS 8.0, *)
 class DetailViewController: UIViewController {
-	var webView: WKWebView!
 	var detailItem: [String: String]!
 
-	override func loadView() {
-		webView = WKWebView()
-		view = webView
-	}
+    @IBOutlet weak var myConcNavItem: UINavigationItem!
+    @IBOutlet weak var myDescText: UITextView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        if navigationController?.tabBarItem.tag == 0 {
+            myConcNavItem.title = "Evento"
+            post(Int(detailItem["id"]!)!)
+        } else {
+            myConcNavItem.title = "Churrasco"
+        }
 
+        
 		if let body = detailItem["body"] {
-			var html = "<html>"
-			html += "<head>"
-			html += "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
-			html += "<style> body { font-size: 150%; } </style>"
-			html += "</head>"
-			html += "<body>"
-			html += body
-			html += "</body>"
-			html += "</html>"
-			webView.loadHTMLString(html, baseURL: nil)
+			myDescText.text = body
 		}
 	}
+    
+    //     func post(params : Dictionary<String, String>, url : String) {
+    
+    func post(id: Int) {
+        let request = NSMutableURLRequest(URL: NSURL(string: AppConfig.urlPost)!)
+        request.HTTPMethod = "POST"
+        
+        let postString = "hash={\"controller\":\"AEIST\",\"action\":\"GetEventDetails\",\"data\":{ \"id\":\(id) } }"
+        //CREATE A CONSTANT FILE WITH THIS THING PWD
+        let headers: NSDictionary = ["X-Mobile-Key": "aeist", "Content-Type": "application/x-www-form-urlencoded", "X-No-Encrypt": AppConfig.noEncryptPwd]
+        request.allHTTPHeaderFields = headers as? [String : String]
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                return
+            }
+            
+            print("response = \(response)")
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
+        }
+        task.resume()
+    }
 }
 
