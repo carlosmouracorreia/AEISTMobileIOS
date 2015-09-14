@@ -11,11 +11,11 @@
 		51A546AC1A1E014B00C2AB9B /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A546AB1A1E014B00C2AB9B /* MasterViewController.swift */; };
 		51A546B11A1E014B00C2AB9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A546AF1A1E014B00C2AB9B /* Main.storyboard */; };
 		51A546CC1A1E0C8F00C2AB9B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A546CB1A1E0C8F00C2AB9B /* SwiftyJSON.swift */; };
+		D00727061BA7147F00CF2BF7 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00727051BA7147F00CF2BF7 /* EventViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D02229181BA1EE65008128E4 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D052138D1BA0EC9900223632 /* WebImage.framework */; };
 		D02229191BA1EE65008128E4 /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D052138D1BA0EC9900223632 /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D041F4AC1BA09266002691B2 /* MyEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041F4AB1BA09266002691B2 /* MyEventCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D052138E1BA0EC9900223632 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D052138D1BA0EC9900223632 /* WebImage.framework */; settings = {ASSET_TAGS = (); ATTRIBUTES = (Required, ); }; };
-		D07349B61BA07ABC00F0D75F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07349B51BA07ABC00F0D75F /* DetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D0AA1D131BA0F81D0082D871 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0AA1D121BA0F81D0082D871 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		D0C7630A1BA70B7C00F2856E /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C763091BA70B7C00F2856E /* DetailCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D0DF64631BA0764000C06B4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0DF64621BA0764000C06B4C /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
@@ -43,9 +43,9 @@
 		51A546AB1A1E014B00C2AB9B /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		51A546B01A1E014B00C2AB9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		51A546CB1A1E0C8F00C2AB9B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D00727051BA7147F00CF2BF7 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		D041F4AB1BA09266002691B2 /* MyEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventCell.swift; sourceTree = "<group>"; };
 		D052138D1BA0EC9900223632 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebImage.framework; sourceTree = "<group>"; };
-		D07349B51BA07ABC00F0D75F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../../../../research/swift/HackingWithSwift/project7/Project7/DetailViewController.swift; sourceTree = "<group>"; };
 		D0AA1D121BA0F81D0082D871 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D0C763091BA70B7C00F2856E /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		D0DF64621BA0764000C06B4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../research/swift/AEISTMobile/AEISTMobile/Assets.xcassets; sourceTree = "<group>"; };
@@ -85,10 +85,10 @@
 		51A546A61A1E014B00C2AB9B /* AEISTMobile */ = {
 			isa = PBXGroup;
 			children = (
+				D00727051BA7147F00CF2BF7 /* EventViewController.swift */,
 				D0C763091BA70B7C00F2856E /* DetailCell.swift */,
 				D0FF69781BA64DA200DF5B60 /* AppConfig.swift */,
 				D041F4AB1BA09266002691B2 /* MyEventCell.swift */,
-				D07349B51BA07ABC00F0D75F /* DetailViewController.swift */,
 				D0DF64621BA0764000C06B4C /* Assets.xcassets */,
 				D0AA1D121BA0F81D0082D871 /* Launch Screen.storyboard */,
 				51A546A91A1E014B00C2AB9B /* AppDelegate.swift */,
@@ -184,11 +184,11 @@
 			files = (
 				D041F4AC1BA09266002691B2 /* MyEventCell.swift in Sources */,
 				51A546AC1A1E014B00C2AB9B /* MasterViewController.swift in Sources */,
+				D00727061BA7147F00CF2BF7 /* EventViewController.swift in Sources */,
 				51A546AA1A1E014B00C2AB9B /* AppDelegate.swift in Sources */,
 				D0FF69791BA64DA200DF5B60 /* AppConfig.swift in Sources */,
 				51A546CC1A1E0C8F00C2AB9B /* SwiftyJSON.swift in Sources */,
 				D0C7630A1BA70B7C00F2856E /* DetailCell.swift in Sources */,
-				D07349B61BA07ABC00F0D75F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
