@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YWP-an-LLH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -96,30 +97,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5L2-tc-uzQ">
-                                <rect key="frame" x="20" y="72" width="240" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5L2-tc-uzQ">
+                                <rect key="frame" x="20" y="230" width="404" height="205"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5L2-tc-uzQ" secondAttribute="height" multiplier="202:71" id="OMb-oL-EnT"/>
+                                </constraints>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XCX-9Y-HJ1">
-                                <rect key="frame" x="20" y="214" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="yKz-zc-Smx">
+                                <rect key="frame" x="20" y="72" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yKz-zc-Smx" secondAttribute="height" multiplier="1:1" id="0yT-PC-k96"/>
+                                    <constraint firstAttribute="width" secondItem="yKz-zc-Smx" secondAttribute="height" multiplier="1:1" id="SHl-fc-JLx"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="XCX-9Y-HJ1">
+                                <rect key="frame" x="20" y="443" width="246" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="40" id="d9m-2N-sja" customClass="DetailCell" customModule="AEISTMobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="240" height="40"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="70" id="d9m-2N-sja" customClass="DetailCell" customModule="AEISTMobile" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="10" width="246" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d9m-2N-sja" id="no4-dX-igH">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="39"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="246" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ljo-fj-eXj">
-                                                    <rect key="frame" x="8" y="11" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ljo-fj-eXj">
+                                                    <rect key="frame" x="4" y="4" width="392" height="58"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ljo-fj-eXj" firstAttribute="leading" secondItem="no4-dX-igH" secondAttribute="leadingMargin" id="1YU-lL-oUG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ljo-fj-eXj" secondAttribute="trailing" id="5AC-Yn-Iow"/>
+                                                <constraint firstItem="Ljo-fj-eXj" firstAttribute="top" secondItem="no4-dX-igH" secondAttribute="topMargin" constant="2" id="HMB-xe-crR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ljo-fj-eXj" secondAttribute="bottom" constant="2" id="JIa-ME-J13"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="myTextLabel" destination="Ljo-fj-eXj" id="XJJ-bV-jQs"/>
@@ -130,14 +151,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5L2-tc-uzQ" firstAttribute="top" secondItem="cIm-e0-J51" secondAttribute="bottom" constant="10" id="9N1-AV-k5l"/>
-                            <constraint firstItem="a0L-h9-sNL" firstAttribute="top" secondItem="5L2-tc-uzQ" secondAttribute="bottom" constant="10" id="Cw9-ga-8kx"/>
-                            <constraint firstItem="5L2-tc-uzQ" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leadingMargin" constant="10" id="UdD-9X-S8W"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5L2-tc-uzQ" secondAttribute="trailing" constant="10" id="e5d-zT-BUW"/>
+                            <constraint firstItem="5L2-tc-uzQ" firstAttribute="top" secondItem="yKz-zc-Smx" secondAttribute="bottom" constant="5" id="18b-Yw-Bvd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XCX-9Y-HJ1" secondAttribute="trailing" constant="10" id="7Rs-G1-sJ3"/>
+                            <constraint firstItem="XCX-9Y-HJ1" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leadingMargin" constant="10" id="7bj-s0-ikJ"/>
+                            <constraint firstItem="5L2-tc-uzQ" firstAttribute="top" secondItem="yKz-zc-Smx" secondAttribute="bottom" constant="5" id="E3k-p1-Dz9"/>
+                            <constraint firstItem="yKz-zc-Smx" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leadingMargin" constant="60" id="Eme-fF-tsF"/>
+                            <constraint firstItem="5L2-tc-uzQ" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leadingMargin" constant="10" id="LIX-SL-WDy"/>
+                            <constraint firstItem="XCX-9Y-HJ1" firstAttribute="top" secondItem="5L2-tc-uzQ" secondAttribute="bottom" constant="5" id="MWW-oK-0XO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yKz-zc-Smx" secondAttribute="trailing" constant="60" id="NeP-QU-L9O"/>
+                            <constraint firstItem="yKz-zc-Smx" firstAttribute="top" secondItem="cIm-e0-J51" secondAttribute="bottom" constant="5" id="Oex-25-mv3"/>
+                            <constraint firstItem="a0L-h9-sNL" firstAttribute="top" secondItem="XCX-9Y-HJ1" secondAttribute="bottom" constant="5" id="Try-z9-PUv"/>
+                            <constraint firstItem="XCX-9Y-HJ1" firstAttribute="top" secondItem="5L2-tc-uzQ" secondAttribute="bottom" constant="5" id="W0b-60-om7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5L2-tc-uzQ" secondAttribute="trailing" constant="10" id="eYb-RV-lIp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Evento" id="cra-N8-TIN"/>
                     <connections>
+                        <outlet property="eventImage" destination="yKz-zc-Smx" id="rxH-hE-DBp"/>
                         <outlet property="myConcNavItem" destination="cra-N8-TIN" id="Fzx-uT-4Jh"/>
                         <outlet property="myDescText" destination="5L2-tc-uzQ" id="InZ-aq-67y"/>
                         <outlet property="tableView" destination="XCX-9Y-HJ1" id="cal-ob-bsN"/>

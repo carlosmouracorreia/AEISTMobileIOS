@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import WebImage
 
 class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var detailItem: [String: String]!
     
     @IBOutlet weak var myConcNavItem: UINavigationItem!
     @IBOutlet weak var myDescText: UITextView!
-    var objects = [[String: String]]()
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var eventImage: UIImageView!
+    var objects = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,17 +24,30 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             myConcNavItem.title = "Evento"
             post(Int(detailItem["id"]!)!)
         } else {
+            tableView.hidden = true
             myConcNavItem.title = "Churrasco"
         }
         
         
         if let body = detailItem["body"] {
             myDescText.text = body
+            myDescText.textContainer.lineFragmentPadding = 0;
+            myDescText.textContainerInset = UIEdgeInsetsZero;
         }
         
+        if let pic = detailItem["pic"] {
+            let url = NSURL(string: pic)
+            eventImage.sd_setImageWithURL(url)
+        }
         self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
+    override func viewDidAppear(animated: Bool) {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
+    }
     
     func post(id: Int) {
         let request = NSMutableURLRequest(URL: NSURL(string: AppConfig.urlPost)!)
@@ -63,6 +77,9 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         for result in json["data"].arrayValue {
             var title: String
             title = result["texto_add"].stringValue
+            if(title.isEmpty) {
+                continue
+            }
             print("Titulo: " + title)
             let obj = ["title": title]
             objects.append(obj)
@@ -86,6 +103,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let object = objects[indexPath.row]
         cell.myTextLabel!.text = object["title"]
+        cell.myTextLabel!.sizeToFit()
         return cell
     }
     
