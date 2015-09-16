@@ -38,7 +38,9 @@ class MasterViewController: UITableViewController {
             myNavTitle.title = "A AEIST"
         }
 
-			if let url = NSURL(string: urlString) {
+        doRequest(typeT,url: urlString)
+        
+      /*  let url = NSMutableURLRequest(URL: NSURL(string: urlString)!)
 			if let data = try? NSData(contentsOfURL: url, options: []) {
 				let json = JSON(data: data)
                 parseJSON(json,typeC: typeT)
@@ -49,11 +51,38 @@ class MasterViewController: UITableViewController {
 				} */
 			} else {
 				showError()
-			}
-		} else {
-			showError()
-		}
+			} */
 	}
+    
+    
+    func doRequest(typeT: Int,url:String) {
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        request.HTTPMethod = "GET"
+        
+      //  let postString = "hash={\"controller\":\"AEIST\",\"action\":\"GetEventDetails\",\"data\":{ \"id\":\(id) } }"
+       // let headers: NSDictionary = ["X-Mobile-Key": "aeist", "Content-Type": "application/x-www-form-urlencoded", "X-No-Encrypt": AppConfig.noEncryptPwd]
+      //  request.allHTTPHeaderFields = headers as? [String : String]
+        //request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                self.showError()
+                return
+            }
+            
+            let json = JSON(data: data!)
+            self.parseJSON(json,typeC: typeT)
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
+            
+            print("response = \(response)")
+            
+        }
+        task.resume()
+    }
 
     func parseJSON(json: JSON, typeC: Int) {
 		for result in json["results"].arrayValue {

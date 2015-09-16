@@ -65,6 +65,9 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 return
             }
             
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
+            
             print("response = \(response)")
             
             let json = JSON(data: data!)
