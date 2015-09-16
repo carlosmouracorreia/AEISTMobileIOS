@@ -28,10 +28,14 @@ class MasterViewController: UITableViewController {
             urlString = "http://mobile.aeist.pt/service_ios.php"
             typeT = 0
             myNavTitle.title = "Eventos"
-        } else {
+        } else if navigationController?.tabBarItem.tag == 1  {
             urlString = "http://mobile.aeist.pt/service_ios_bbq.php"
             typeT = 1
             myNavTitle.title = "Churrascos"
+        } else {
+            urlString = "http://www.loungerist.com/v1"
+            typeT = 2
+            myNavTitle.title = "A AEIST"
         }
 
 			if let url = NSURL(string: urlString) {
