@@ -46,12 +46,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.tableView.delegate = self
     }
     
-    override func viewDidAppear(animated: Bool) {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-        })
-    }
-    
+     
     func post(id: Int) {
         let request = NSMutableURLRequest(URL: NSURL(string: AppConfig.urlPost)!)
         request.HTTPMethod = "POST"
@@ -74,7 +69,9 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             print("response = \(response)")
             
             let json = JSON(data: data!)
-            self.parseJSON(json)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.parseJSON(json)
+            }
         }
         task.resume()
     }

@@ -79,7 +79,9 @@ class MasterViewController: UITableViewController {
             }
             
             let json = JSON(data: data!)
-            self.parseJSON(json,typeC: typeT)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.parseJSON(json,typeC: typeT)
+            }
             
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             print("responseString = \(responseString)")
