@@ -23,9 +23,12 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         if navigationController?.tabBarItem.tag == 0 {
             myConcNavItem.title = "Evento"
             post(Int(detailItem["id"]!)!)
-        } else {
+        } else if navigationController?.tabBarItem.tag == 1 {
             tableView.hidden = true
             myConcNavItem.title = "Churrasco"
+        } else {
+            eventImage.hidden = true
+            myConcNavItem.title = detailItem["nome"]
         }
         
         

@@ -38,7 +38,7 @@ class MasterViewController: UITableViewController {
             myNavTitle.title = "A AEIST"
         }
 
-        doRequest(typeT,url: urlString)
+        doRequest(typeT,web: urlString)
         
       /*  let url = NSMutableURLRequest(URL: NSURL(string: urlString)!)
 			if let data = try? NSData(contentsOfURL: url, options: []) {
@@ -55,15 +55,21 @@ class MasterViewController: UITableViewController {
 	}
     
     
-    func doRequest(typeT: Int,url:String) {
+    func doRequest(typeT: Int,web url:String) {
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        request.HTTPMethod = "GET"
+        request.HTTPMethod = typeT==2 ? "POST" : "GET"
         
-      //  let postString = "hash={\"controller\":\"AEIST\",\"action\":\"GetEventDetails\",\"data\":{ \"id\":\(id) } }"
-       // let headers: NSDictionary = ["X-Mobile-Key": "aeist", "Content-Type": "application/x-www-form-urlencoded", "X-No-Encrypt": AppConfig.noEncryptPwd]
-      //  request.allHTTPHeaderFields = headers as? [String : String]
-        //request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+        /**
+        * We need to make an HTTP Request using POST verb here, that's where all the confusing is arising....
+        *
+        **/
+        if typeT==2 {
+             let postString = "hash={\"controller\":\"AEIST\",\"action\":\"GetPelouros\",\"data\":{} }"
+             let headers: NSDictionary = ["X-Mobile-Key": "aeist", "Content-Type": "application/x-www-form-urlencoded", "X-No-Encrypt": AppConfig.noEncryptPwd]
+             request.allHTTPHeaderFields = headers as? [String : String]
+             request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        }
+          let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
             
             if error != nil {
@@ -85,20 +91,39 @@ class MasterViewController: UITableViewController {
     }
 
     func parseJSON(json: JSON, typeC: Int) {
-		for result in json["results"].arrayValue {
+        let lol : String = typeC==2 ? "data" : "results"
+        for result in json[lol].arrayValue {
             var title,body,sigs,pic,id : String
-            if typeC==0 {
+            switch(typeC) {
+            case 0:
                 title = result["evento_titulo"].stringValue
                 body = result["evento_desc"].stringValue
                 sigs = result["evento_link"].stringValue
                 pic = result["evento_foto"].stringValue
                 id = result["id"].stringValue
-            } else {
+                break;
+            case 1:
                 title = result["name"].stringValue
                 body = result["desc"].stringValue
                 sigs = result["dia"].stringValue
                 pic = result["urlFoto"].stringValue
                 id = result["id"].stringValue
+                break;
+            case 2:
+                title = result["nome"].stringValue
+                body = result["desc"].stringValue
+                sigs = ""
+                pic = result["photoUrl"].stringValue
+                id = result["id"].stringValue
+                break;
+            default:
+                title = ""
+                body = ""
+                sigs = ""
+                pic = ""
+                id = ""
+                break;
+                
             }
             let obj = ["title": title, "body": body, "sigs": sigs,"pic": pic,"id":id]
 			objects.append(obj)
