@@ -154,7 +154,13 @@ class MasterViewController: UITableViewController {
                 (segue.destinationViewController as! EventViewController).detailItem = object
             }
 		}
-	}
+        if segue.identifier == "showDetailAEIST" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let object = objects[indexPath.row]
+                (segue.destinationViewController as! AEISTViewController).detailItem = object["id"]
+            }
+        }
+    }
 
 	// MARK: - Table View
 
@@ -167,20 +173,29 @@ class MasterViewController: UITableViewController {
 	}
 
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MyEventCell
-
-		let object = objects[indexPath.row]
-		cell.myTitleLabel!.text = object["title"]
-		cell.myDescLabel!.text = object["body"]
-        let url = NSURL(string: object["pic"]!)
-        cell.myImage.sd_setImageWithURL(url)
-        if navigationController?.tabBarItem.tag == 0 {
-            cell.myDateLabel!.hidden = true
+        let object = objects[indexPath.row]
+        if navigationController?.tabBarItem.tag == 2 {
+          let cell = tableView.dequeueReusableCellWithIdentifier("AEISTCell", forIndexPath: indexPath) as! MyAEISTEventCell
+            cell.myTitleLabel!.text = object["title"]
+            cell.myDescLabel!.text = object["body"]
+            let url = NSURL(string: object["pic"]!)
+            cell.myImageLabel.sd_setImageWithURL(url)
+            return cell
         } else {
-            cell.myDateLabel!.hidden = false
-            cell.myDateLabel!.text = object["sigs"]
+            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MyEventCell
+            if navigationController?.tabBarItem.tag == 0 {
+                cell.myDateLabel!.hidden = true
+            } else {
+                cell.myDateLabel!.hidden = false
+                cell.myDateLabel!.text = object["sigs"]
+            }
+            cell.myTitleLabel!.text = object["title"]
+            cell.myDescLabel!.text = object["body"]
+            let url = NSURL(string: object["pic"]!)
+            cell.myImage.sd_setImageWithURL(url)
+            return cell
         }
-		return cell
+        
 	}
     
 }
