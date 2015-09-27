@@ -44,6 +44,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.contentInset = UIEdgeInsetsZero
+        self.myDescText.contentInset = UIEdgeInsetsZero
     }
     
      

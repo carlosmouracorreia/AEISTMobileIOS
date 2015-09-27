@@ -10,19 +10,21 @@ import UIKit
 import WebImage
 
 class AEISTViewController: UITableViewController {
+    @IBOutlet weak var titleHeader: UINavigationItem!
     let url = "http://www.loungerist.com/v1"
-    var detailItem : String!
+    var detailObject: [String: String]!
     var objects = [[String: String]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleHeader.title = detailObject["title"]!
         doRequest()
     }
     
     func doRequest() {
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         request.HTTPMethod = "POST"
-        let postString = "hash={\"controller\":\"AEIST\",\"action\":\"GetPessoas\",\"data\":{\"id\":"+detailItem+"} }"
+        let postString = "hash={\"controller\":\"AEIST\",\"action\":\"GetPessoas\",\"data\":{\"id\":"+detailObject["id"]!+"} }"
         let headers: NSDictionary = ["X-Mobile-Key": "aeist", "Content-Type": "application/x-www-form-urlencoded", "X-No-Encrypt": AppConfig.noEncryptPwd]
         request.allHTTPHeaderFields = headers as? [String : String]
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
@@ -65,8 +67,10 @@ class AEISTViewController: UITableViewController {
     
     
     func showError() {
-        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        let ac = UIAlertController(title: "Erro no Carregamento", message: "Ocorreu um erro ao carregar os conteudos. Por favor tente novamente", preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(alertAction)in
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }))
         self.presentViewController(ac, animated: true, completion: nil)
     }
 

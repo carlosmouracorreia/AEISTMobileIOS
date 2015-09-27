@@ -11,6 +11,8 @@ import WebImage
 
 class MasterViewController: UITableViewController {
 	var objects = [[String: String]]()
+    var urlString: String?
+    var typeT: Int?
 
     @IBOutlet weak var myNavTitle: UINavigationItem!
     
@@ -21,8 +23,6 @@ class MasterViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-        var urlString: String
-        var typeT: Int
         
         if navigationController?.tabBarItem.tag == 0 {
             urlString = "http://mobile.aeist.pt/service_ios.php"
@@ -38,25 +38,22 @@ class MasterViewController: UITableViewController {
             myNavTitle.title = "A AEIST"
         }
 
-        doRequest(typeT,web: urlString)
+        doRequest()
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.attributedTitle = NSAttributedString(string: "Puxe para actualizar")
+        self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl!)
         
-      /*  let url = NSMutableURLRequest(URL: NSURL(string: urlString)!)
-			if let data = try? NSData(contentsOfURL: url, options: []) {
-				let json = JSON(data: data)
-                parseJSON(json,typeC: typeT)
-				/*if json["metadata"]["responseInfo"]["status"].intValue == 200 {
-					parseJSON(json)
-				} else {
-					showError()
-				} */
-			} else {
-				showError()
-			} */
-	}
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        doRequest()
+    }
     
     
-    func doRequest(typeT: Int,web url:String) {
-        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+    func doRequest() {
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString!)!)
         request.HTTPMethod = typeT==2 ? "POST" : "GET"
         
         /**
@@ -72,6 +69,10 @@ class MasterViewController: UITableViewController {
           let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
             
+            if self.refreshControl!.refreshing {
+                self.refreshControl!.endRefreshing()
+            }
+
             if error != nil {
                 print("error=\(error)")
                 self.showError()
@@ -80,7 +81,7 @@ class MasterViewController: UITableViewController {
             
             let json = JSON(data: data!)
             dispatch_async(dispatch_get_main_queue()) {
-                self.parseJSON(json,typeC: typeT)
+                self.parseJSON(json,typeC: self.typeT!)
             }
             
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
@@ -93,6 +94,7 @@ class MasterViewController: UITableViewController {
     }
 
     func parseJSON(json: JSON, typeC: Int) {
+        objects.removeAll()
         let lol : String = typeC==2 ? "data" : "results"
         for result in json[lol].arrayValue {
             var title,body,sigs,pic,id : String
@@ -132,10 +134,10 @@ class MasterViewController: UITableViewController {
 		}
 
 		self.tableView.reloadData()
-	}
+    }
 
 	func showError() {
-        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .Alert)
+        let ac = UIAlertController(title: "Erro de Carregamento", message: "Ocorreu um problema a carregar o conteudo. Tudo bem com a conexão à web? Recarregue deslizando para baixo", preferredStyle: .Alert)
         ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
         self.presentViewController(ac, animated: true, completion: nil)
     }
@@ -157,7 +159,7 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetailAEIST" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let object = objects[indexPath.row]
-                (segue.destinationViewController as! AEISTViewController).detailItem = object["id"]
+                (segue.destinationViewController as! AEISTViewController).detailObject = object
             }
         }
     }

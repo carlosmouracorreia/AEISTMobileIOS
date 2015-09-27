@@ -10,7 +10,7 @@
         <scene sceneID="cUi-kZ-frf">
             <objects>
                 <navigationController storyboardIdentifier="NavController" title="Master" id="rS3-R9-Ivy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Eventos" id="Iu3-J0-Haf"/>
+                    <tabBarItem key="tabBarItem" title="Eventos" image="events_tab" id="Iu3-J0-Haf"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -27,18 +27,18 @@
             <objects>
                 <tableViewController title="Master" id="pGg-6v-bdr" customClass="MasterViewController" customModule="AEISTMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="22" id="mLL-gJ-YKr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="Cell" rowHeight="101" id="m0d-ak-lc9" customClass="MyEventCell" customModule="AEISTMobile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="101"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="sV2-Uh-fsh">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="C5F26358-25DA-4D37-B873-6A8D0C4FEEDE" translatesAutoresizingMaskIntoConstraints="NO" id="sV2-Uh-fsh">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="100"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-Cp-oEh">
@@ -70,13 +70,13 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AEISTCell" rowHeight="101" id="a3I-lk-tfW" customClass="MyAEISTEventCell" customModule="AEISTMobile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="193" width="600" height="101"/>
+                                <rect key="frame" x="0.0" y="129" width="600" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a3I-lk-tfW" id="HtH-LD-Bns">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="XwD-0n-eqg">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="C5F26358-25DA-4D37-B873-6A8D0C4FEEDE" translatesAutoresizingMaskIntoConstraints="NO" id="XwD-0n-eqg">
                                             <rect key="frame" x="0.0" y="1" width="120" height="100"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9X-Y2-2Se">
@@ -107,6 +107,7 @@
                             <outlet property="delegate" destination="pGg-6v-bdr" id="Y6K-Cp-Qkv"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Eventos" id="tQt-TN-PWz"/>
                     <connections>
                         <outlet property="myNavTitle" destination="tQt-TN-PWz" id="nJy-Iq-rpi"/>
@@ -116,7 +117,7 @@
             </objects>
             <point key="canvasLocation" x="1417" y="64"/>
         </scene>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="Eay-aU-eI0">
             <objects>
                 <tableViewController id="PjY-l4-ZNy" customClass="AEISTViewController" customModule="AEISTMobile" customModuleProvider="target" sceneMemberID="viewController">
@@ -168,6 +169,10 @@
                             <outlet property="delegate" destination="PjY-l4-ZNy" id="Nzv-Le-kO6"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="ZoF-eG-IPw"/>
+                    <connections>
+                        <outlet property="titleHeader" destination="ZoF-eG-IPw" id="XDx-Ja-Wy1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75W-wR-vzg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

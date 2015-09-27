@@ -20,12 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		var storyboard = UIStoryboard(name: "Main", bundle: nil)
 		var vc = storyboard.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
-        vc.tabBarItem = UITabBarItem(title: "BBQs", image: nil, tag: 1)
+        let firstImage = UIImage(named: "bbq_tab")
+        let secondImage = UIImage(named: "aeist_tab")
+        
+        vc.tabBarItem = UITabBarItem(title: "BBQs", image: firstImage, tag: 1)
 
 		tabBarController.viewControllers?.append(vc)
         
         var vcAE = storyboard.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
-        vcAE.tabBarItem = UITabBarItem(title: "A AEIST", image: nil, tag: 2)
+        vcAE.tabBarItem = UITabBarItem(title: "A AEIST", image: secondImage, tag: 2)
         
         tabBarController.viewControllers?.append(vcAE)
 
