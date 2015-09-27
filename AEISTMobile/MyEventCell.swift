@@ -14,4 +14,8 @@ class MyEventCell: UITableViewCell {
     @IBOutlet weak var myDescLabel: UILabel!
     @IBOutlet weak var myDateLabel: UILabel!
     @IBOutlet weak var myImage: UIImageView!
+    
+  /*  override func prepareForReuse() {
+           // SimpleCache.sharedInstance.cancelImage(requestUrl)
+    } */
 }

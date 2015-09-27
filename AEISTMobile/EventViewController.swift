@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WebImage
+//import WebImage
 
 class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var detailItem: [String: String]!
@@ -40,7 +40,15 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         if let pic = detailItem["pic"] {
             let url = NSURL(string: pic)
-            eventImage.sd_setImageWithURL(url)
+            //eventImage.sd_setImageWithURL(url)
+            SimpleCache.sharedInstance.getImage(url!) { image, error in
+                if let err = error {
+                    // thou shall handle errors
+                } else if let fullImage = image {
+                    self.eventImage.image = fullImage
+                }
+            }
+
         }
         self.tableView.dataSource = self
         self.tableView.delegate = self

@@ -15,29 +15,13 @@
 		D020D4251BB5F4CA00CD8EC1 /* MyAEISTEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D020D4241BB5F4CA00CD8EC1 /* MyAEISTEventCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D020D4271BB5F7E000CD8EC1 /* AEISTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D020D4261BB5F7E000CD8EC1 /* AEISTViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D020D4291BB5FCF300CD8EC1 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D020D4281BB5FCF300CD8EC1 /* PersonCell.swift */; settings = {ASSET_TAGS = (); }; };
-		D02229181BA1EE65008128E4 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D052138D1BA0EC9900223632 /* WebImage.framework */; };
-		D02229191BA1EE65008128E4 /* WebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D052138D1BA0EC9900223632 /* WebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D041F4AC1BA09266002691B2 /* MyEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041F4AB1BA09266002691B2 /* MyEventCell.swift */; settings = {ASSET_TAGS = (); }; };
-		D052138E1BA0EC9900223632 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D052138D1BA0EC9900223632 /* WebImage.framework */; settings = {ASSET_TAGS = (); ATTRIBUTES = (Required, ); }; };
+		D07F2AC71BB8444900FFF56D /* SimpleImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F2AC61BB8444900FFF56D /* SimpleImageCache.swift */; settings = {ASSET_TAGS = (); }; };
 		D0AA1D131BA0F81D0082D871 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0AA1D121BA0F81D0082D871 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		D0C7630A1BA70B7C00F2856E /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C763091BA70B7C00F2856E /* DetailCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D0DF64631BA0764000C06B4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0DF64621BA0764000C06B4C /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		D0FF69791BA64DA200DF5B60 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FF69781BA64DA200DF5B60 /* AppConfig.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		D022291A1BA1EE66008128E4 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D02229191BA1EE65008128E4 /* WebImage.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		51A546A41A1E014B00C2AB9B /* AEISTMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AEISTMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,7 +35,7 @@
 		D020D4261BB5F7E000CD8EC1 /* AEISTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEISTViewController.swift; sourceTree = "<group>"; };
 		D020D4281BB5FCF300CD8EC1 /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		D041F4AB1BA09266002691B2 /* MyEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventCell.swift; sourceTree = "<group>"; };
-		D052138D1BA0EC9900223632 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebImage.framework; sourceTree = "<group>"; };
+		D07F2AC61BB8444900FFF56D /* SimpleImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageCache.swift; sourceTree = "<group>"; };
 		D0AA1D121BA0F81D0082D871 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D0C763091BA70B7C00F2856E /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		D0DF64621BA0764000C06B4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../research/swift/AEISTMobile/AEISTMobile/Assets.xcassets; sourceTree = "<group>"; };
@@ -63,8 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D052138E1BA0EC9900223632 /* WebImage.framework in Frameworks */,
-				D02229181BA1EE65008128E4 /* WebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +56,6 @@
 		51A5469B1A1E014B00C2AB9B = {
 			isa = PBXGroup;
 			children = (
-				D052138D1BA0EC9900223632 /* WebImage.framework */,
 				51A546A61A1E014B00C2AB9B /* AEISTMobile */,
 				51A546A51A1E014B00C2AB9B /* Products */,
 			);
@@ -105,6 +86,7 @@
 				51A546A71A1E014B00C2AB9B /* Supporting Files */,
 				D020D4261BB5F7E000CD8EC1 /* AEISTViewController.swift */,
 				D020D4281BB5FCF300CD8EC1 /* PersonCell.swift */,
+				D07F2AC61BB8444900FFF56D /* SimpleImageCache.swift */,
 			);
 			path = AEISTMobile;
 			sourceTree = "<group>";
@@ -127,7 +109,6 @@
 				51A546A01A1E014B00C2AB9B /* Sources */,
 				51A546A11A1E014B00C2AB9B /* Frameworks */,
 				51A546A21A1E014B00C2AB9B /* Resources */,
-				D022291A1BA1EE66008128E4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,6 +177,7 @@
 				D020D4291BB5FCF300CD8EC1 /* PersonCell.swift in Sources */,
 				D00727061BA7147F00CF2BF7 /* EventViewController.swift in Sources */,
 				51A546AA1A1E014B00C2AB9B /* AppDelegate.swift in Sources */,
+				D07F2AC71BB8444900FFF56D /* SimpleImageCache.swift in Sources */,
 				D0FF69791BA64DA200DF5B60 /* AppConfig.swift in Sources */,
 				51A546CC1A1E0C8F00C2AB9B /* SwiftyJSON.swift in Sources */,
 				D020D4271BB5F7E000CD8EC1 /* AEISTViewController.swift in Sources */,
@@ -308,12 +290,14 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = AEISTMobile/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = ios.AEISTMobile;
 				PRODUCT_NAME = AEISTMobile;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -329,12 +313,14 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = AEISTMobile/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = ios.AEISTMobile;
 				PRODUCT_NAME = AEISTMobile;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

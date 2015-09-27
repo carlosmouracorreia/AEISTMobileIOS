@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WebImage
+//import WebImage
 
 class MasterViewController: UITableViewController {
 	var objects = [[String: String]]()
@@ -137,9 +137,17 @@ class MasterViewController: UITableViewController {
     }
 
 	func showError() {
-        let ac = UIAlertController(title: "Erro de Carregamento", message: "Ocorreu um problema a carregar o conteudo. Tudo bem com a conexão à web? Recarregue deslizando para baixo", preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        self.presentViewController(ac, animated: true, completion: nil)
+        if #available(iOS 8.0, *) {
+            let ac = UIAlertController(title: "Erro de Carregamento", message: "Ocorreu um problema a carregar o conteudo. Tudo bem com a conexão à web? Recarregue deslizando para baixo", preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(ac, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertView()
+            alert.title = "Erro no Carregamento"
+            alert.message = "Ocorreu um problema a carregar o conteudo. Tudo bem com a conexão à web? Recarregue deslizando para baixo"
+            alert.addButtonWithTitle("OK")
+            alert.show()
+        }
     }
 
 	override func didReceiveMemoryWarning() {
@@ -174,6 +182,10 @@ class MasterViewController: UITableViewController {
 		return objects.count
 	}
 
+    /**
+    * THIS IS SCANDALOUS - CORRECT !!!! //TODO
+    *
+    **/
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let object = objects[indexPath.row]
         if navigationController?.tabBarItem.tag == 2 {
@@ -181,7 +193,15 @@ class MasterViewController: UITableViewController {
             cell.myTitleLabel!.text = object["title"]
             cell.myDescLabel!.text = object["body"]
             let url = NSURL(string: object["pic"]!)
-            cell.myImageLabel.sd_setImageWithURL(url)
+           // cell.myImageLabel.sd_setImageWithURL(url)
+            SimpleCache.sharedInstance.getImage(url!) { image, error in
+                if let err = error {
+                    // thou shall handle errors
+                } else if let fullImage = image {
+                    cell.myImageLabel.image = fullImage
+                }
+            }
+
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MyEventCell
@@ -194,11 +214,20 @@ class MasterViewController: UITableViewController {
             cell.myTitleLabel!.text = object["title"]
             cell.myDescLabel!.text = object["body"]
             let url = NSURL(string: object["pic"]!)
-            cell.myImage.sd_setImageWithURL(url)
+            //cell.myImage.sd_setImageWithURL(url)
+            
+            SimpleCache.sharedInstance.getImage(url!) { image, error in
+                if let err = error {
+                    // thou shall handle errors
+                } else if let fullImage = image {
+                    cell.myImage.image = fullImage
+                }
+            }
             return cell
         }
         
 	}
+    
     
 }
 

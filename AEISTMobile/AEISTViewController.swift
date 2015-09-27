@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import WebImage
+//import WebImage
 
-class AEISTViewController: UITableViewController {
+class AEISTViewController: UITableViewController,UIAlertViewDelegate  {
     @IBOutlet weak var titleHeader: UINavigationItem!
     let url = "http://www.loungerist.com/v1"
     var detailObject: [String: String]!
@@ -63,17 +63,23 @@ class AEISTViewController: UITableViewController {
         }
         self.tableView.reloadData()
     }
-
-    
     
     func showError() {
-        let ac = UIAlertController(title: "Erro no Carregamento", message: "Ocorreu um erro ao carregar os conteudos. Por favor tente novamente", preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(alertAction)in
-            self.navigationController?.popToRootViewControllerAnimated(true)
-        }))
-        self.presentViewController(ac, animated: true, completion: nil)
-    }
+        if #available(iOS 8.0, *) {
+            let ac = UIAlertController(title: "Erro no Carregamento", message: "Ocorreu um erro ao carregar os conteudos. Por favor tente novamente", preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(alertAction)in
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            }))
+            self.presentViewController(ac, animated: true, completion: nil)
 
+        } else {
+            let alert = UIAlertView()
+            alert.title = "Erro no Carregamento"
+            alert.message = "Ocorreu um erro ao carregar os conteudos. Por favor tente novamente"
+            alert.addButtonWithTitle("OK")
+            alert.show()
+        }
+    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -90,7 +96,15 @@ class AEISTViewController: UITableViewController {
         cell.myEmail!.text = object["email"]
         cell.myRoll!.text = object["role"]
         let url = NSURL(string: object["photoUrl"]!)
-        cell.myImage.sd_setImageWithURL(url)
+        SimpleCache.sharedInstance.getImage(url!) { image, error in
+            if let err = error {
+                // thou shall handle errors
+            } else if let fullImage = image {
+                cell.myImage.image = fullImage
+            }
+        }
+
+        //cell.myImage.sd_setImageWithURL(url)
         return cell
     }
 }
